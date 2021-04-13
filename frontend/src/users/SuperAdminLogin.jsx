@@ -48,7 +48,7 @@ const SuperAdminSignin = (props) => {
 
                 localStorage.setItem('jwt_info', JSON.stringify(res))
 
-                props.history.push('/')
+                props.history.push('/superAdmin/ManageSellers')
             }
 
             

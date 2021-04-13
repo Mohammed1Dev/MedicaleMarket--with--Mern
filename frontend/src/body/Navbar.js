@@ -11,6 +11,12 @@ import './bodyStyle.css'
 
 
 var cartIcon = require('./../icons/iconCart.png');
+var logo = require('./../icons/logoMedecine.png');
+var sellerManage = require('./../icons/sellerManage.png');
+var adminManage = require('./../icons/adminManage.png');
+var Parametres = require('./../icons/Parametres.png');
+var shopLocation = require('./../icons/shopLocation.png');
+var logOut = require('./../icons/logOut.png');
 
 
 
@@ -52,16 +58,16 @@ const Menu = (props) => {
     return (
         <div>
             {(() => {
-                if (!isAuthenticated() || isAuthenticated().seller || isAuthenticated().client) {
+                if (!isAuthenticated() || !isAuthenticated().superAdmin || isAuthenticated().seller || isAuthenticated().client) {
                 return (
                     <div>
                         <nav className="navbar fixed-top navbar-expand-lg navbar-dark" style={{/*background: '-webkit-linear-gradient(to right, #135058, #F1F2B5)',   Chrome 10-25, Safari 5.1-6 */
-                                                                        background: 'linear-gradient(to right, #134e5e, #71b280)'
+                                                                        background: 'linear-gradient(to right, #304352, #d7d2cc)'
                                                                         // background: 'linear-gradient(to right, #2bc0e4, #eaecc6)'
                                                                         /* background: 'linear-gradient(to right, #135058, #F1F2B5)' W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
                                                                         }}>
      
-                    <Link className="navbar-brand" to="/"><img src="https://img.icons8.com/nolan/64/hospital.png" alt="Market-Icon"/><span className='text-white'>Medical-Market</span></Link>
+                    <Link className="navbar-brand" to="/" style={{color: 'linear-gradient(to right, #EAECC6, #7CE7BF)', textShadow: '10px 10px 42px 0px #eaecc6da'}} ><img src={logo.default} alt="Market-Icon"/><span  >Medical-Market</span></Link>
             
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -141,7 +147,7 @@ const Menu = (props) => {
             </nav>
                     </div>
                 )
-                } else if (isAuthenticated().superAdmin || isAuthenticated().admin) {
+                } else if (isAuthenticated() || isAuthenticated().superAdmin || isAuthenticated().admin) {
                 return (
                     <div>
                         <button type="button" className="mobile-nav-toggle d-xl-none"><i className="icofont-navigation-menu"></i></button>
@@ -150,29 +156,59 @@ const Menu = (props) => {
                             <div className="d-flex flex-column">
 
                                 <div className="profile">
-                                    <img src="assets/img/" alt="" className="img-fluid rounded-circle" />
+                                    <img style={{width: '30%'}} src={logo.default} alt="" className="img-fluid rounded-circle" />
                                     <h1 className="text-light"><a href="index.html"></a></h1>
                                     <div className="social-links mt-3 text-center">
-                                        <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>
-                                        <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>
-                                        <a href="#" className="instagram"><i className="bx bxl-instagram"></i></a>
-                                        <a href="#" className="google-plus"><i className="bx bxl-skype"></i></a>
-                                        <a href="#" className="linkeclassNamedin"><i className="bx bxl-linkedin"></i></a>
+                                     
                                     </div>
                                 </div>
 
                                 <nav class="nav-menu">
                                     <ul>
 
-                                        <li className="active"><a href="Home.php"><i className="bx bx-home"></i> <span>Home</span></a></li>
-                                        <li><a href=""><i className="bx bx-user"></i> <span>Lists</span></a></li>
-                                        <li><a href=""><i className="bx bx-server"></i>Our Facts</a></li>
-                                        <li><a href=""><i className="bx bx-envelope"></i> Your Profile -</a></li>
-                                        <li><a href=""><i className="bx bx-book-content"></i> Log In </a></li>
+                                        <li className="active">
+                                        
+                                            <Link 
+                                            style={isActive(props.history, '/superAdmin/ManageSellers')} 
+                                            className="nav-link" 
+                                            to={ '/superAdmin/ManageSellers'}
+                                            >
+                                               <img src={sellerManage.default} alt="sellerManage"/> Sellers Management
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link 
+                                                
+                                                className="nav-link" 
+                                                to={ '/superAdmin/ManageSellers'}
+                                                >
+                                                <img src={adminManage.default} alt="sellerManage"/> Admins Management
+                                            </Link>
+                                        </li>
+                                
+                                        <li>
+                                        <Link 
+                                                
+                                                className="nav-link" 
+                                                to={ '/superAdmin/ManageSellers'}
+                                                >
+                                                <img src={Parametres.default} alt="sellerManage"/> Parametres
+                                            </Link>
+                                        </li>
+                                        <li>
+                                        <Link 
+                                                
+                                                className="nav-link" 
+                                                to={ '/superAdmin/ManageSellers'}
+                                                >
+                                                <img src={shopLocation.default} alt="sellerManage"/> See Interctivity
+                                            </Link>
+                                        </li>
                                         { isAuthenticated() && (
                                             <Fragment>
                                                 <li className="nav-item">
-                                                    <span className="nav-link text-dark" style={{ cursor: 'pointer' }} onClick={signOut}>SignOut</span>
+                                                    <span className="nav-link text-dark" style={{ cursor: 'pointer' }} onClick={signOut}><img src={logOut.default} alt="sellerManage"/>SignOut</span>
+                                                    
                                                 </li>
                                             </Fragment>
                                         ) }

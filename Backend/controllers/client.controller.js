@@ -34,7 +34,7 @@ const clientRegistration = async (req, res) => {
                 if(err) {
                     return res.status(400).send(err)
                 }
-                res.send(oneClient)
+                res.send({oneClient})
             })
 
               //save new user
@@ -79,7 +79,7 @@ const clientLogin = async (req, res) => {
             // res.cookie("token", token, {expire: new Date() + 902600})
 
             // const {_id, fullName, email, status, document} = client;
-            res.header("auth-token", token,{expire: new Date() + 902600}).send({token})
+            res.header("auth-token", token,{expire: new Date() + 902600}).send({token, client})
             // res.json({
             //     token, seller: {_id, fullName, email, status, document},message: 'welcome Dear Seller you are authentified Know with activated account'
             // })

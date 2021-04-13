@@ -119,6 +119,7 @@ const Registration = (props) => {
                     })
                     setFormData(new FormData())
                     props.history.push('/Login')
+                    
                 }
 
                 
@@ -136,52 +137,52 @@ const Registration = (props) => {
         <form onSubmit={submitRegistration}> 
           <div className="form-group row">
               <div className="col-lg-6 text-center">
-                    <label htmlFor="seller" className="text-muted ">As Seller</label>
+                    <label htmlFor="seller" className="label">As Seller</label>
                     <input onChange={sellerCase} type="radio" className="form-control" id="seller" name="userCase"/>
               </div>
                 <div className="col-lg-6 text-center">
-                    <label htmlFor="client" className="text-center">As Client</label>
+                    <label htmlFor="client" className="label">As Client</label>
                     <input onChange={clientCase} type="radio" className="form-control" id="client" name="userCase"/>           
                 </div>
 
             </div>
             <div className="form-group">
-                <label htmlFor="firstname" className="text-muted">FirstName :</label>
+                <label htmlFor="firstname" className="label mb-3">FirstName :</label>
                 <input onChange={handleChange} type="text" className="form-control" id="firstname" />
             </div>
             <div className="form-group">
-                <label htmlFor="lastname" className="text-muted">LastName :</label>
+                <label htmlFor="lastname" className="label mb-3">LastName :</label>
                 <input onChange={handleChange} type="text" className="form-control" id="lastname" />
             </div>
             {userCase === 'isSeller' && 
            
                 <div className="form-group">
-                    <label htmlFor="experience" className="text-muted">Your Experience :</label>
+                    <label htmlFor="experience" className="label mb-3">Your Experience :</label>
                     <input onChange={handleChange} type="number" className="form-control" id="experience"/>
                 </div>
             }
             
             <div className="form-group">
-                <label htmlFor="email" className="text-muted">E-mail :</label>
+                <label htmlFor="email" className="label mb-3">E-mail :</label>
                 <input onChange={handleChange} type="email" className="form-control" id="email" />
             </div>
             <div className="form-group">
-                <label htmlFor="about" className="text-muted">About :</label>
+                <label htmlFor="about" className="label mb-3">About :</label>
                 <input onChange={handleChange} type="textarea" className="form-control" id="about"/>
             </div>
 
             <div className="form-group">
-                <label htmlFor="hashed_password" className="text-muted">password :</label>
+                <label htmlFor="hashed_password" className="label mb-3">password :</label>
                 <input onChange={handleChange} type="password" className="form-control" id="hashed_password"/>
             </div>
             <div className="form-group">
-                <label htmlFor="repeat_password" className="text-muted">repeat password :</label>
+                <label htmlFor="repeat_password" className="label mb-3">repeat password :</label>
                 <input onChange={handleChange} type="password" className="form-control" id="repeat_password"/>
             </div>
             {userCase === 'isSeller' &&
 
                  <div className="form-group">
-                    <label htmlFor="document" className="text-muted">Upload your justification Document:</label>
+                    <label htmlFor="document" className="label mb-3">Upload your justification Document:</label>
                     <input onChange={handleChange} type="file" className="form-control" id="document"/>
                 </div>
             }
@@ -202,7 +203,7 @@ const Registration = (props) => {
         >
          
         <div className="row">
-            <div className="col-md-6 mx-auto form">
+            <div className="col-md-6 mx-auto form swing-top-fwd">
 
                 { form() } 
             </div>

@@ -93,7 +93,7 @@ const allSellers = (req, res) => {
     Seller.find()
     .then(sellers => {
         console.log(sellers);
-          res.status(200).json(sellers);
+          res.json({sellers});
         }).catch(error => {
           console.log(error);
           res.status(500).json({
@@ -107,8 +107,8 @@ const allSellers = (req, res) => {
 const sellerConfirmation = (req, res) => {
     // Find seller By ID and update it
     Seller.updateOne({ _id: req.params.id },{ status: req.body.status })
-                .then(() => res.status(201).json("Seller activated successfully"))
-                .catch((err) => res.status(400).json("Error :" + err));
+                .then(() => res.status(201).json({message: "Seller activated successfully"}))
+                .catch((err) => res.status(400).send(" Error : " + err) )
 };
 //Bann Seller account
 const bannSeller = (req, res) => {

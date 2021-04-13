@@ -77,12 +77,11 @@ const Login = (props) => {
                     method: "POST",
                     headers: {
                         "Accept": "application/json",
-                        "Content-Type": "application/json"
+                        "Content-Type": "*/*",
+                        "Access-Control-Allow-Origin": "*"
                     },
                     body: JSON.stringify(user)
-                })
-                .then(res => res.json())
-                .then(res => {
+                }).then(res => {
                     if(res.error) {
                         toastr.warning(res.error, 'Please Check form !', {
                             positionClass: "toast-bottom-left",
@@ -90,7 +89,7 @@ const Login = (props) => {
                     }
                     else {
                         toastr.info('Seller is authenticated SuccessFully', 'Welcome', {
-                            positionClass: "toast-bottom-left",
+                            positionClass: "toast-bottom-left"
                         })
         
                         localStorage.setItem('jwt_info', JSON.stringify(res))
@@ -100,9 +99,8 @@ const Login = (props) => {
         
                     
         
-                })
-                .catch(err =>  toastr.error(err, 'Server error !', {
-                            positionClass: "toast-bottom-left",
+                }).catch(err =>  toastr.error(err, 'Server error !', {
+                            positionClass: "toast-bottom-left"
                         }))
         }
       
@@ -114,23 +112,23 @@ const Login = (props) => {
 
              <div className="form-group row">
                 <div className="col-lg-6 text-center">
-                        <label htmlFor="seller" className="text-muted ">As Seller</label>
+                        <label htmlFor="seller" className="label">As Seller</label>
                         <input onChange={sellerCase} type="radio" className="form-control" id="seller" name="userCase"/>
                 </div>
                 <div className="col-lg-6 text-center">
-                    <label htmlFor="client" className="text-center">As Client</label>
+                    <label htmlFor="client" className="label">As Client</label>
                     <input onChange={clientCase} type="radio" className="form-control" id="client" name="userCase"/>           
                 </div>
             </div>
            
             <div className="form-group">
-                <label htmlFor="email" className="text-muted">email</label>
+                <label htmlFor="email" className="label  mb-3">email</label>
                 <input onChange={handleChange} type="email" className="form-control" id="email" />
             </div>
 
 
             <div className="form-group">
-                <label htmlFor="hashed_password" className="text-muted">password</label>
+                <label htmlFor="hashed_password" className="label  mb-3">password</label>
                 <input onChange={handleChange} type="password" className="form-control" id="hashed_password"/>
             </div>
 
@@ -145,7 +143,7 @@ const Login = (props) => {
         <Container 
            title="Login" 
            description="Your Welcome To Medicale MarketPlace" 
-           className="container"
+           className="container swing-top-fwd mt-5"
         >
          
         <div className="row">

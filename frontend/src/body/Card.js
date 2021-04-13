@@ -23,7 +23,7 @@ const Card = ({product, showViewBtn = true}) => {
     return (
         <div>
 
-          <div className="card text-white mb-2 px-2" style={{background: 'linear-gradient(to right, #134e5e, #71b280)'}}>
+          <div className="card text-white mb-2 px-2" style={{background: 'linear-gradient(to right, #304352, #d7d2cc)'}}>
               <div className="card-header">
                 <h4 className="display-6 text-center">{product.name}</h4> </div>
                <Image item={product} url="product/photo" className="card-img-top"></Image>
@@ -38,7 +38,7 @@ const Card = ({product, showViewBtn = true}) => {
                   </div>
 
                   <div className="text-center my-3">
-                     <span style={{fontSize: '20px'}} className="badge badge-info">${product.price}</span> 
+                     <span style={{fontSize: '20px'}} className="badge badge-info">{product.price} $</span> 
                      <span className="ml-5 badge-pill badge-dark">{product.category.name}</span> 
 
                   </div>
@@ -51,10 +51,10 @@ const Card = ({product, showViewBtn = true}) => {
                   
                   )}
 
-                  {isAuthenticated().client && product.quantity > 0 && (
+                  {(isAuthenticated() && product.quantity > 0) && (
                     <button onClick={() => dispatch(addToCart(product))} className="btn btn-success"><img src={addToCartIcon.default} alt="addToCart"/></button>
 
-                  ) }
+                  )}
               </div>
           </div>
 

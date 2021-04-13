@@ -19,6 +19,7 @@ const adminById = (req, res, next, id) => {
 
 const sellerById = (req, res, next, id) => {
     Seller.findById(id).exec((err, seller) => {
+        
 
         if(err || !seller) {
             return res.status(404).json({

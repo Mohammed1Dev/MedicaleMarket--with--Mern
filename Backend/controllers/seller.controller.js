@@ -97,7 +97,7 @@ const sellerLogin = async (req, res) => {
                 })
             }
     
-            const token = jwt.sign({_id: seller._id, status: seller.status}, process.env.SECRET_KEY);
+            const token = jwt.sign({seller: seller}, process.env.SECRET_KEY);
             console.log(token);
             // res.cookie("token", token, {expire: new Date() + 902600})
 
@@ -122,9 +122,17 @@ const sellerLogout = (req, res) => {
 }
 
 
+const sellerFile = (req, res) => {
+    const {contentType, data} = req.profile.document
+
+    if(data) {
+        res.set("Content-Type" , contentType)
+        
+        return res.send(data)
+    }
+}
 
 
 
-
-module.exports = { sellerRegistration, sellerLogin, sellerLogout }
+module.exports = { sellerRegistration, sellerLogin, sellerLogout, sellerFile }
 

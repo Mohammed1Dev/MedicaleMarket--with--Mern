@@ -1,13 +1,12 @@
 import React from 'react'
-import CarouselPage  from "./Slides";
 
 const Container = ({ title, description, className, children }) => {
     return (
         <div>
-            <div className=" mt-5 text-center">
-                <CarouselPage title={title} description={description}/>
-                <h1 className="display-4">{title}</h1>
-                <p className="lead">{description}</p>
+            <div className="text-center pt-5">
+
+                <h1 className="display-4 mt-5">{title}</h1>
+                <p className="lead mt-5">{description}</p>
             </div>
             
             

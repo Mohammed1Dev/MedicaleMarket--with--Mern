@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Container from './container'
 import { getProducts } from './../helpers/helpersMethods';
 import Card from './Card';
+import CarouselPage  from "./Slides";
 // import Search from './Search'
 
 function Home() {
@@ -31,6 +32,7 @@ function Home() {
 
     return (
         <div>
+            <CarouselPage />
             <Container 
                title="Home Page" 
                description="Node React bEcommerce App" 

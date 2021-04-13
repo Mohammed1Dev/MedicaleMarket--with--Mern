@@ -12,6 +12,17 @@ export const getProducts = (params) => {
 
 }
 
+export const getSellers = () => {
+
+  
+    return fetch(`${API_URL}/superAdmin/ShowSellers`)
+      .then(res => res.json())
+      .then(res => res.sellers)
+      .catch(err => console.error(err))
+  
+  }
+
+
 export const relatedProducts = (id) => {
 
 return fetch(`${API_URL}/product/related/${id}`)
